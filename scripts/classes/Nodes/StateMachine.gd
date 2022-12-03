@@ -16,10 +16,9 @@ func _process(delta: float) -> void:
 
 
 func change_state(new_state: State) -> void:
-	state.exit_state()
+	yield(state.exit_state(), "completed")
 	state = new_state
 	state.enter_state()
-
 
 func change_state_by_name(name: String) -> void:
 	change_state(get_node(name))
